@@ -11,15 +11,19 @@ import java.util.Properties;
 
 public class SemiTemplate {
 
-	public static Connection getConnection() {
+	public static Connection getConnection(boolean isLocalhost) {
 		Connection conn = null;
 		Properties prop = new Properties();
 		
 		try {
-			String currentPath = SemiTemplate.class.getResource("./").getPath();
+			String currentPath = SemiTemplate.class.getResource("").getPath();
 			prop.load(new FileReader(currentPath + "driver.properties"));
 			Class.forName(prop.getProperty("jdbc.driver"));
-			conn = DriverManager.getConnection(prop.getProperty("jdbc.url"), prop.getProperty("jdbc.name"), prop.getProperty("jdbc.password"));
+			if(isLocalhost) {
+				conn = DriverManager.getConnection(prop.getProperty("jdbc.url"), prop.getProperty("jdbc.name"), prop.getProperty("jdbc.password"));
+			}else {
+				conn = DriverManager.getConnection(prop.getProperty("jdbc.semi.url"), prop.getProperty("jdbc.semi.name"), prop.getProperty("jdbc.semi.password"));
+			}
 		} catch (IOException | ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
