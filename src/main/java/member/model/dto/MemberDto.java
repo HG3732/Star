@@ -14,14 +14,14 @@ public class MemberDto {
 	private String mem_pwd;
 	private String mem_email;
 	private String mem_address;
-	private int log_status;
+
 	
 	public MemberDto() {
 		super();
 	}
 
 	public MemberDto(String mem_id, int mem_admin, String mem_name, String mem_pwd, String mem_email,
-			String mem_address, int log_status) {
+			String mem_address) {
 		super();
 		this.mem_id = mem_id;
 		this.mem_admin = mem_admin;
@@ -29,14 +29,12 @@ public class MemberDto {
 		this.mem_pwd = mem_pwd;
 		this.mem_email = mem_email;
 		this.mem_address = mem_address;
-		this.log_status = log_status;
 	}
 
 	@Override
 	public String toString() {
 		return "MemberDto [mem_id=" + mem_id + ", mem_admin=" + mem_admin + ", mem_name=" + mem_name + ", mem_pwd="
-				+ mem_pwd + ", mem_email=" + mem_email + ", mem_address=" + mem_address + ", log_status=" + log_status
-				+ "]";
+				+ mem_pwd + ", mem_email=" + mem_email + ", mem_address=" + mem_address + "]";
 	}
 
 	public String getMem_id() {
@@ -87,12 +85,5 @@ public class MemberDto {
 		this.mem_address = mem_address;
 	}
 
-	public int getLog_status() {
-		return log_status;
-	}
-
-	public void setLog_status(int log_status) {
-		this.log_status = log_status;
-	}
 	
 }

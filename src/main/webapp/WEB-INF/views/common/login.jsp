@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,6 +26,7 @@ function loginSubmitHandler() {
 		,success : function(result){
 			console.log(result);
 			if(result == 1){
+				
 				alert("어서오세요");
 				
 				location.href="${pageContext.request.contextPath}/home";
@@ -65,10 +67,12 @@ function loginBtnHandler() {
                 <div class="main-login">
                     <input type="text" name="id" class="login id" placeholder="아이디">
                     <input type="password" name="pw" class="login pw" placeholder="비밀번호">
-                    <input type="submit" class="login-submit" value="로그인" disabled>
+                    <input type="button" class="login-submit" value="로그인" disabled>
                 </div>
             </form>
             <button type="button" class="join">회원 가입</button>
+            [[ ${ssslogin} ]]
+[[ <%=session.getAttribute("ssslogin")%> ]]
         </div>
     </div>
 </body>

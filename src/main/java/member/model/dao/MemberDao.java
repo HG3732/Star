@@ -107,7 +107,7 @@ public class MemberDao {
 					result = new ArrayList<MemberDto>();
 					do {
 						MemberDto dto = new MemberDto(rs.getString("MEMBER_ID"), rs.getInt("MEMBER_ADMIN"), rs.getString("MEMBER_NAME"), rs.getString("MEMBER_PWD"), rs.getString("MEMBER_EMAIL")
-										, rs.getString("MEMBER_ADDRESS"), rs.getInt("LOG_STATUS"));
+										, rs.getString("MEMBER_ADDRESS"));
 						result.add(dto);
 					} while (rs.next());
 				}
@@ -134,7 +134,7 @@ public class MemberDao {
 				// result 처리
 				if(rs.next()) {
 					result = new MemberDto(rs.getString("MEMBER_ID"), rs.getInt("MEMBER_ADMIN"), rs.getString("MEMBER_NAME"), rs.getString("MEMBER_PWD"), rs.getString("MEMBER_EMAIL")
-							, rs.getString("MEMBER_ADDRESS"), rs.getInt("LOG_STATUS"));
+							, rs.getString("MEMBER_ADDRESS"));
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
