@@ -11,7 +11,7 @@ import member.model.dto.MemberInfoDto;
 import member.model.dto.MemberLoginDto;
 import member.vo.service.MemberService;
 
-@WebServlet("/login")
+@WebServlet("/logout")
 public class LogoutController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
