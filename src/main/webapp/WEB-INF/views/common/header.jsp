@@ -19,8 +19,9 @@ function loadedHandler() {
 	function logoutHandler() {
 		alert("안녕히가십시오");
 		
-		var frmlogout = document.getElementById("frm-logout");
+		var frmlogout = document.getElementById("logout");
 		frmlogout.action = "${pageContext.request.contextPath}/logout";
+		frmlogout.method = "post";
 		frmlogout.submit();
 	}
 }
@@ -34,10 +35,12 @@ function loadedHandler() {
 	    		<c:choose>
 		    		<c:when test="${empty ssslogin}">
 		                <div><a href="http://localhost:8080/star/login">로그인</a></div>
-		                <div><a href="#">회원가입</a></div>
+		                <div><a href="http://localhost:8080/star/star/join" target="_blank">회원가입</a></div>
 	                </c:when>
 	                <c:otherwise>
-		                <div><a href="#" class="logout">로그아웃</a></div>
+	                	<form id="logout">
+		                	<div><a href="#" class="logout">로그아웃</a></div>
+		                </form>
 		                <div><a href="#">마이페이지</a></div>
 	                </c:otherwise>
 	            </c:choose>

@@ -2,7 +2,7 @@ body {
     background-color: black;
     background-image: url('../../image/heaven.jpg');
     background-repeat: no-repeat;
-    background-size: 2000px;
+    background-size: 100%;
     
 }
 header div.wrap-header {
@@ -18,11 +18,11 @@ header div.wrap-header {
     justify-content: flex-end;
 }
 
-.wrap-header > .top-bar > div {
+.wrap-header > .top-bar div {
     padding: 20px;
 }
 
-.wrap-header > .top-bar > div > a{
+.wrap-header > .top-bar div > a{
     color: #ccc;
 }
 
