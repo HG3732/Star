@@ -47,7 +47,7 @@ function loadedHandler() {
             </div>
 	        <div class="logo"><a href="http://localhost:8080/star/home">김서박</a></div>
 	        <div class="nav">
-	            <div><a href="#" class="edu">교육 신청</a></div>
+	            <div><a href="http://localhost:8080/star/edu/list" class="edu">교육 신청</a></div>
 	            <div><a href="#" class="board">게시판</a></div>
 	        </div>
 	        <div class="bottom-info">
