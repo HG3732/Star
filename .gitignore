@@ -1,2 +1,3 @@
 
 *.properties
+src/main/java/common/driver.properties
