@@ -63,7 +63,7 @@ header > div.top > a {
     margin: 0 auto;
 }
 
-.mainbox button[type=button]{
+.mainbox input[type=button]{
         background-color: #503396;
         border: none;
         border-radius: 5px;
@@ -74,7 +74,23 @@ header > div.top > a {
         margin: 0 auto;
         height: 46px;
     }
-.mainbox button[type=button]:disabled{
+.mainbox input[type=button]:disabled{
+        background-color: #ddd;
+        color: #666;
+    }
+    
+.mainbox input[type=submit]{
+        background-color: #503396;
+        border: none;
+        border-radius: 5px;
+        width: 200px;
+        font-size: 20px;
+        font-weight: 500;
+        color: #fff;
+        margin: 0 auto;
+        height: 46px;
+    }
+.mainbox input[type=submit]:disabled{
         background-color: #ddd;
         color: #666;
     }
@@ -95,7 +111,7 @@ div.checkAll{
     border-bottom: 1px solid #ccc;
 }
 div.checkAll h2{
-    font-size: 18px;
+    font-size: 24px;
 }
 
 .terms  {
@@ -128,6 +144,11 @@ div.checkAll h2{
 }
 .wrap-step1 textarea:focus {
     outline: none;
+}
+
+label h2 {
+	font-size: 18px;
+	padding-top : 3px;
 }
 
 
@@ -179,6 +200,13 @@ div.checkAll h2{
     	height: 32px;
     	font-size: 12px;
     	margin-left: 5px;
+    	border:none;
+    	border-radius: 5px;
+    }
+
+.mainbox .wrap-step2 button[type=button].idcheck:disabled{
+        background-color: #ddd;
+        color: #666;
     }
 
 .alert {

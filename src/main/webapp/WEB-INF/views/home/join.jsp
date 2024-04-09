@@ -23,6 +23,7 @@
         $(".step2input").on("focusout", checkStep2);
         $(".submit2").on("click", stepForward2Handler);
         $(".submit3").on("click", stepEndHandler);
+        $(".idcheck").on("click", idCheckHandler);
     }
     
     //전체 체크시 하위 체크박스 체크 + 버튼 활성화
@@ -61,8 +62,12 @@
     function idAlertHandler() {
         if(idRegExp.test($(".id").val())){
             $(".id-alert").css("display", "none");
+            $(".idcheck").prop('disabled', false);
         } else {
             $(".id-alert").css("display", "block");
+            $(".idcheck").css("background-color", "#DDD");
+			$(".idcheck").html("중복 확인");
+            $(".idcheck").prop('disabled', true);
         }
     }
 
@@ -113,6 +118,33 @@
     function stepEndHandler(){
         window.close();
     }
+    
+    //아이디 중복 체크
+    function idCheckHandler(){
+    	var id = $("[name=id]").val();
+    	$.ajax({
+    		url:"${pageContext.request.contextPath}/star/checkid"
+    		,method:"post"
+    		,data : {cid : id}
+    		,success : function(result){
+    			if(result > 0){
+    				//아이디가 이미 존재할 때
+    				 $(".idcheck").css("background-color", "rgb(255,100,100)");
+    				 $(".idcheck").html("사용 불가");
+    			} else {
+    				//사용 가능한 아이디일 때
+    				$(".idcheck").css("background-color", "rgb(100,180,255)");
+   				 	$(".idcheck").html("사용 가능");
+    			}
+    		}
+    		,error : function(request, status, error){
+    			alert("code:"  + request.status + "\n" + "message : "
+    					+ request.responseText + "\n"
+    					+"error : " + error);
+    		}
+    	});
+    }
+    
 </script>
 </head>
 <body>
@@ -157,7 +189,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet diam in li
                             </textarea>
                         </div>
                         <div class="subbutton">
-                            <button type="button" class="submit1" disabled>확 인</button>
+                            <input type="button" class="submit1" value="확 인" disabled>
                         </div>
                     </form>
 
@@ -165,7 +197,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet diam in li
                 <div class="wrap-step2">
                     <p>&nbsp;회원정보를 입력해주세요.</p>
                     <div class="wrap-form">
-                        <form>
+                        <form action="${pageContext.request.contextPath}/star/join" method="post">
                             <table>
                                 <colgroup>
                                     <col style="width: 130px">
@@ -224,7 +256,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet diam in li
                                 </tr>
                             </table>
                             <div class="subbutton">
-                                <button type="button" class="submit2" disabled>회원가입</button>
+                                <input type="submit" class="submit2" value="회원가입" disabled>
                             </div>
                         </form>
                     </div>
@@ -240,7 +272,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet diam in li
                         이제부터 김서박에서 제공하는 다양한 기능을 이용하실 수 있습니다.
                     </div>
                     <div class="subbutton">
-                        <button type="button" class="submit3">홈으로 이동</button>
+                        <input type="button" class="submit3" value="홈으로 이동">
                     </div>
                 </div>
             </div>

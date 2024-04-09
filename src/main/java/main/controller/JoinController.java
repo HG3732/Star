@@ -28,14 +28,13 @@ public class JoinController extends HttpServlet {
 		String memPwd = request.getParameter("pw");
 		String memEmail = request.getParameter("mail");
 		String memAddress = request.getParameter("address");
+		System.out.println(memId+ ", " + memName+ ", " + memPwd+ ", " + memEmail+ ", " + memAddress);
 		MemberDto dto = new MemberDto(memId, 0, memName, memPwd, memEmail, memAddress);
 		int result = new MemberService().insert(dto);
 		if(result < 0) {	//회원가입 실패 시
 			response.sendRedirect(request.getContextPath()+"/home");
-			System.out.println("회원가입 실패시");
 			return;
 		} 	//회원가입 성공 시
-		System.out.println("회원가입 성공시");
-			response.sendRedirect(request.getContextPath()+"/login");
+		else	response.sendRedirect(request.getContextPath()+"/login");
 	}
 }
