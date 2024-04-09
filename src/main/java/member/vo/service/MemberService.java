@@ -13,7 +13,7 @@ public class MemberService {
 	
 	public MemberInfoDto loginGetInfo(MemberLoginDto dto) {
 		MemberInfoDto result = null;
-		Connection conn = getConnection();
+		Connection conn = getConnection(true);
 		result = dao.loginGetInfo(conn, dto);
 		
 		close(conn);
@@ -22,7 +22,7 @@ public class MemberService {
 	
 	public int login(MemberLoginDto dto) {
 		int result = 0;
-		Connection conn = getConnection();
+		Connection conn = getConnection(true);
 		result = dao.login(conn, dto);
 		
 		close(conn);
@@ -31,7 +31,7 @@ public class MemberService {
 	
 	public int selectCheckId(String memId) {
 		int result = 0;
-		Connection conn = getConnection();
+		Connection conn = getConnection(true);
 		result = dao.selectCheckId(conn, memId);
 		
 		close(conn);
@@ -41,7 +41,7 @@ public class MemberService {
 	
 	public List<MemberDto> selectAllList() {
 		List<MemberDto> result = null;
-		Connection conn = getConnection();
+		Connection conn = getConnection(true);
 		result = dao.selectAllList(conn);
 		close(conn);
 		return result;
@@ -49,7 +49,7 @@ public class MemberService {
 	//select one
 	public MemberDto selectOne(String memId) {
 		MemberDto result = null;
-		Connection conn = getConnection();
+		Connection conn = getConnection(true);
 		result = dao.selectOne(conn, memId);
 		
 		close(conn);
@@ -58,7 +58,7 @@ public class MemberService {
 	//insert
 	public int insert(MemberDto dto) {
 		int result = 0;
-		Connection conn = getConnection();
+		Connection conn = getConnection(true);
 		result = dao.insert(conn, dto);
 		close(conn);
 		return result;
@@ -66,7 +66,7 @@ public class MemberService {
 	//update
 	public int update(MemberDto dto) {
 		int result = 0;
-		Connection conn = getConnection();
+		Connection conn = getConnection(true);
 		result = dao.update(conn, dto);
 		close(conn);
 		return result;
@@ -74,7 +74,7 @@ public class MemberService {
 	//deletes
 	public int delete(String memId) {
 		int result = 0;
-		Connection conn = getConnection();
+		Connection conn = getConnection(true);
 		result = dao.delete(conn, memId);
 		close(conn);
 		return result;
