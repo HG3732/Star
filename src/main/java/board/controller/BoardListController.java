@@ -7,12 +7,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import board.model.service.BoardService;
+
 /**
  * Servlet implementation class BoardListController
  */
 @WebServlet("/board/list")
 public class BoardListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private BoardService service = new BoardService();
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -27,6 +30,9 @@ public class BoardListController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.getRequestDispatcher("/WEB-INF/views/board/board_community.jsp").forward(request, response);
+		System.out.println("연결 확인 두 겟");
+		request.setAttribute("dtolist", service.selectAllList());
+		System.out.println("컨트롤러 selectAllList" + service.selectAllList());
 	}
 
 	/**

@@ -13,8 +13,10 @@
     <link href="${pageContext.request.contextPath}/resource/css/board/board_core.css"rel="stylesheet">
     <link href="${pageContext.request.contextPath}/resource/css/board/board_community.css"rel="stylesheet">
 </head>
-<
+
 <body>
+    [[${dtolist }]] <br>
+    [[<%=request.getAttribute("dtolist") %>]]
     <div class="wrap-header">
         <header>
 	<%@include file="/WEB-INF/views/common/header.jsp"%> 
