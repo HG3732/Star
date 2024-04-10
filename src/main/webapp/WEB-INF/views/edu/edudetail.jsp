@@ -11,25 +11,30 @@
     <link href="${pageContext.request.contextPath}/resource/css/reset.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/resource/css/core.css" rel="stylesheet">
     <style>
-        .wrap-main
-        , .wrap-footer{
+        .wrap-main,
+        .wrap-footer {
             margin: 10px auto;
             width: 1100px;
             height: fit-content;
         }
-        .wrap-main ul{
+
+        .wrap-main ul {
             text-align: center;
         }
-        .wrap-main li{
+
+        .wrap-main li {
             list-style-type: none;
             display: inline-block;
         }
-        .wrap-main li > a{
+
+        .wrap-main li>a {
             text-decoration: none;
         }
-        .wrap-main .content{
+
+        .wrap-main .content {
             overflow: hidden;
         }
+
         .wrap-main .content > a {
             float: left;
             width: 50%;
@@ -37,48 +42,86 @@
             cursor: pointer;
             text-align: center;
         }
+
         .wrap-main .home-menu{
             display: flex;
             float: right;
             align-items: center;
             margin: 10px 0;
         }
-        .wrap-main hr{
+
+        .wrap-main hr {
             clear: both;
         }
-        .wrap-main .home-menu img{
-            width: 1em; height: 1em;
+
+
+
+
+
+
+
+
+
+
+        .wrap-main .home-menu img {
+            width: 1em;
+            height: 1em;
+            background-color: white;
         }
 
-
-
-
-
-
-
-
-
-
-        .wrap-main .edu-book-list{
-            height: fit-content;
+        .wrap-main .edu-list {
+            clear: both;
+            line-height: 3em;
         }
-        .wrap-main #calendar{
-            margin: 20px auto;
+        
+        .wrap-main .edu-detail{
+        	padding: 30px;
         }
-        .wrap-main #calendar a{
+
+		.wrap-main .edu-detail-title{
+			float: left;
+			width: 80%;
+		}
+		.wrap-main .edu-edit-del{
+			width: 20%;
+		    display: flex;
+		    float: right;
+		    column-gap: 10px;
+		    justify-content: flex-end;
+		}
+
+        .wrap-main .edu-list-search input[type=text] {
+            width: 200px;
+        }
+
+        .wrap-main .btn.search-edu {
+            background-color: transparent;
+            border: 0;
             cursor: pointer;
         }
 
 
 
 
-
-
-
-        .wrap-footer{
-            clear: both;
+        .wrap-main .edu-detail-content table{
+            width: 100%;
         }
 
+
+
+        .wrap-main .edu-book{
+            text-align: center;
+        }
+
+
+
+
+
+
+
+        .wrap-footer {
+            clear: both;
+        }
     </style>
 </head>
 
@@ -92,110 +135,57 @@
         </div>
         <div class="content">
             <a href="http://localhost:8080/star/edu/list">교육 목록</a>
-            <a href="http://localhost:8080/star/edu/detail">교육 예약 현황</a>
+            <a href="http://localhost:8080/star/edu/book/list">교육 예약 현황</a>
             <div class="home-menu">
                 <a href="#"><img src="https://www.jejusi.go.kr/images/star/icon/home_icon01.png"></a>
                 <div> &nbsp; | 행사 및 교육 | 행사 및 교육신청</div>
             </div>
             <hr>
-            <div class="edu-book-list">
-                <div id="calendar" style="width: 900px; height: 740px;"></div>
+            <div class="edu-list">
+                <div class="edu-detail">
+                    <div class="edu-detail-title">
+                        교육 제목
+                    </div>
+                    <div class="edu-edit-del">
+                        <a href="http://localhost:8080/star/edu/detail/edit">수정</a>
+                        <a href="해당 글 삭제 doGet">삭제</a>
+                    </div>
+                    <div class="edu-detail-content">
+                        <table border="1" style="border-collapse: collapse;">
+                            <colgroup>
+                                <col style="width: 10%;">
+                                <col>
+                                <col style="width: 10%;">
+                                <col>
+                            </colgroup>
+                            <tbody>
+                                <tr>
+                                    <td>신청기간</td><td>기간</td><td>운영기간</td><td>기간</td>
+                                </tr>
+                                <tr>
+                                    <td>운영요일</td><td>요일</td><td colspan="2"></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium iure placeat odio ullam perferendis, nostrum, vel quas modi aut recusandae id, sapiente voluptas facere quibusdam autem et natus. Velit, nulla.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="edu-book">
+                        <a href="http://192.168.10.11:5500/star/E-5.html">신청하기</a>
+                    </div>
+                    
+                </div>
             </div>
         </div>
+        <div class="wrap-footer">
+            <footer>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae voluptatum magni sit officia ad id
+                explicabo adipisci distinctio expedita, voluptas laborum minima labore, animi maxime soluta! Deleniti
+                vel nostrum dicta.
+            </footer>
+        </div>
     </div>
-    <div class="wrap-footer">
-        <footer>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae voluptatum magni sit officia ad id explicabo adipisci distinctio expedita, voluptas laborum minima labore, animi maxime soluta! Deleniti vel nostrum dicta.
-        </footer>
-    </div>
-    <script>
-        $(loadedHandler);
-        function loadedHandler(){
-            $("label.edu-list").on("click", eduListClkHandler);
-            $("label.edu-book-list").on("click", eduBookListClkHandler);
-        }
-        function eduListClkHandler(){
-            $("div.edu.list").show();
-            $("div.edu.book-list").hide();
-        }
-        function eduBookListClkHandler(){
-            $("div.edu.list").hide();
-            $("div.edu.book-list").show();
-        }
-
-
-
-
-        document.addEventListener('DOMContentLoaded', function () {
-            var calendarEl = document.getElementById('calendar');
-            var calendar = new FullCalendar.Calendar(calendarEl, {
-                // Tool Bar 목록 document : https://fullcalendar.io/docs/toolbar
-                headerToolbar: {
-                    left: 'prev',
-                    center: 'title',
-                    right: 'next'
-                },
-                selectable: true,
-                selectMirror: true,
-                navLinks: false,
-                editable: false,
-                dayMaxEvents: false,
-                events: [
-                    {
-                        color: '#ff0000',
-                        title: 'Long Event',
-                        start: '2024-04-07',
-                        end: '2024-04-10'
-                    },
-                    {
-                        title: 'Conference',
-                        start: '2024-04-11',
-                        end: '2024-04-13'
-                    },
-                    {
-                        title: 'Conference2',
-                        start: '2024-04-11',
-                        end: '2024-04-13'
-                    },
-                    {
-                        title: 'Meeting',
-                        start: '2024-04-12T10:30:00',
-                        end: '2024-04-12T12:30:00'
-                    },
-                    {
-                        title: 'Lunch',
-                        start: '2024-04-12T12:00:00'
-                    },
-                    {
-                        title: 'Meeting',
-                        start: '2024-04-12T14:30:00'
-                    },
-                    {
-                        title: 'Happy Hour',
-                        start: '2024-04-12T17:30:00'
-                    },
-                    {
-                        title: 'Dinner',
-                        start: '2024-04-12T20:00:00'
-                    },
-                    {
-                        title: 'Birthday Party',
-                        start: '2024-04-13T07:00:00'
-                    },
-                    {
-                        title: 'Click for Google',
-                        url: 'http://google.com/',
-                        start: '2024-04-28'
-                    }
-                ]
-            });
-            calendar.render();
-        });
-    
-
-
-
-
-    </script>
 </body>
+
 </html>
