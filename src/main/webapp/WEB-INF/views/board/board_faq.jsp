@@ -7,28 +7,33 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Document</title>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script src="https:/code.jquery.com/jquery-3.7.1.js"></script>
-<link
-	href="${pageContext.request.contextPath}/resource/css/board_reset.css"
+<link href="${pageContext.request.contextPath}/resource/css/reset.css"
+	rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resource/css/core.css"
 	rel="stylesheet">
 <link
-	href="${pageContext.request.contextPath}/resource/css/board_core.css"
+	href="${pageContext.request.contextPath}/resource/css/board/board_core.css"
 	rel="stylesheet">
 <link
-	href="${pageContext.request.contextPath}/resource/css/board_faq.css"
+	href="${pageContext.request.contextPath}/resource/css/board/board_faq.css"
 	rel="stylesheet">
 </head>
 
 <body>
 	<div class="wrap-header">
-		<header> </header>
+		<header> 
+		<%@include file="/WEB-INF/views/common/header.jsp"%>
+		</header>
 	</div>
 	<div class="wrap-main">
 		<div class="container">
 			<div class="flexnav">
-				<a href="${pageContext.request.contextPath}/community"
+				<a href="${pageContext.request.contextPath}/board/community"
 					class="flex community">게시판</a> <a
-					href="${pageContext.request.contextPath}/faq" class="flex faq">FAQ</a>
+					href="${pageContext.request.contextPath}/board/faq"
+					class="flex faq">FAQ</a>
 			</div>
 			<div class="location">
 				<div class="location notice">
@@ -221,17 +226,14 @@
 	</div>
 	</div>
 	<div class="wrap-footer">
-		<footer> </footer>
+		<footer> 
+		</footer>
 	</div>
 	<script>
-		$(document).ready(
-				function() {
-					$(".open.active").click(
-							function() {
-								$(this).toggleClass('active'); // 활성/비활성 클래스 전환
-								$(this).parent().parent().next().children(
-										".faq_detail").stop().slideToggle(300); // FAQ 섹션 슬라이드 업/다운
-							});
+		$(document).ready(function() {$(".open.active").click(function() {
+				$(this).toggleClass('active'); // 활성/비활성 클래스 전환
+				$(this).parent().parent().next().children(".faq_detail").stop().slideToggle(300); // FAQ 섹션 슬라이드 업/다운
+					});
 				});
 	</script>
 </body>

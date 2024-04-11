@@ -7,21 +7,31 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Board View</title>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script src="https:/code.jquery.com/jquery-3.7.1.js"></script>
-    <link href="${pageContext.request.contextPath}/resource/css/board_reset.css"rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/resource/css/board_core.css"rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/resource/css/board_view.css"rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resource/css/reset.css"
+	rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resource/css/core.css"
+	rel="stylesheet">
+<link
+	href="${pageContext.request.contextPath}/resource/css/board/board_core.css"
+	rel="stylesheet">
+<link
+	href="${pageContext.request.contextPath}/resource/css/board/board_view.css"
+	rel="stylesheet">
 </head>
 
 <body>
 	<div class="wrap-header">
-		<header> </header>
+		<header>
+		<%@include file="/WEB-INF/views/common/header.jsp"%>
+		 </header>
 	</div>
 	<div class="wrap-main">
 		<div class="container">
 			<div class="flexnav">
-				<a href="${pageContext.request.contextPath}/community" class="flex community">게시판</a>
-                <a href="${pageContext.request.contextPath}/faq" class="flex faq">FAQ</a>
+				<a href="${pageContext.request.contextPath}/board/community" class="flex community">게시판</a>
+                <a href="${pageContext.request.contextPath}/board/faq" class="flex faq">FAQ</a>
 			</div>
 			<div class="location">
 				<div class="location notice">
@@ -78,7 +88,7 @@
 					</div>
 					<div class="view-btn">
 						<button type="button" class="lsit-btn"
-							onclick="location.href='/semi/views/board_community.html'">목록</button>
+							onclick="${pageContext.request.contextPath}/board/comminity">목록</button>
 					</div>
 				</div>
 			</div>

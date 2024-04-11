@@ -7,10 +7,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Board Write</title>
-    <script src="https:/code.jquery.com/jquery-3.7.1.js"></script>
-    <link href="${pageContext.request.contextPath}/resource/css/board_reset.css"rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/resource/css/board_core.css"rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/resource/css/board_write.css"rel="stylesheet">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<script src="https:/code.jquery.com/jquery-3.7.1.js"></script>
+<link href="${pageContext.request.contextPath}/resource/css/reset.css"
+	rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resource/css/core.css"
+	rel="stylesheet">
+<link
+	href="${pageContext.request.contextPath}/resource/css/board/board_core.css"
+	rel="stylesheet">
+<link
+	href="${pageContext.request.contextPath}/resource/css/board/board_write.css"
+	rel="stylesheet">
 </head>
 <style>
 
@@ -19,14 +27,14 @@
 <body>
     <div class="wrap-header">
         <header>
-
+<%@include file="/WEB-INF/views/common/header.jsp"%>
         </header>
     </div>
     <div class="wrap-main">
         <div class="container">
             <div class="flexnav">
-                <a href="${pageContext.request.contextPath}/community" class="flex community">게시판</a>
-                <a href="${pageContext.request.contextPath}/faq" class="flex faq">FAQ</a>
+                <a href="${pageContext.request.contextPath}/board/community" class="flex community">게시판</a>
+                <a href="${pageContext.request.contextPath}/board/faq" class="flex faq">FAQ</a>
             </div>
             <div class="location">
                 <div class="location notice"><span>게시판</span></div>
@@ -38,7 +46,7 @@
             </div>
             <div class="contents">
                 <div class="board-write">
-                    <form action="${pageContext.request.contextPath}/community" name="notice" id="notice" method="get">
+                    <form action="${pageContext.request.contextPath}/board/community" name="notice" id="notice" method="get">
                         <div class="insert-form">
                             <table>
                                 <tr>
@@ -125,7 +133,7 @@
         }
         function btnUpModalOkClickHandler() {
             console.log("눌림");
-            location.href = "${pageContext.request.contextPath}/community";
+            location.href = "${pageContext.request.contextPath}/board/community";
 
             var htmlVal = '<tr>' +
                 '<td class="td no">번호</td>' +
@@ -149,7 +157,7 @@
         }
         function btnListModalOkClickHandler() {
             console.log("눌림");
-            location.href = "${pageContext.request.contextPath}/community";
+            location.href = "${pageContext.request.contextPath}/board/community";
         }
         function btnListModalCancleClickHandler() {
             console.log("모달창 닫기");

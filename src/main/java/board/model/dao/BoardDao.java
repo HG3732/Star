@@ -25,7 +25,9 @@ public class BoardDao {
 	// selecAllList
 	public List<BoardListDto> selectAllList(Connection conn) {
 		List<BoardListDto> result = null;
-		String sql = "SELECT BOARD_NO, BOARD_TITLE, BOARD_WRITER, BOARD_WRITE_TIME, HIT FROM BOARD_COMMUNITY";
+//		String sql = "SELECT BOARD_NO, BOARD_TITLE, BOARD_WRITER, BOARD_WRITE_TIME, HIT FROM BOARD_COMMUNITY";
+		String sql = "select board_no, board_title, file_id, board_writer, board_write_time, hit"
+				+ " from board_community join board_file on b_no = board_no";
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 	    try {
@@ -37,6 +39,7 @@ public class BoardDao {
 	            BoardListDto dto = new BoardListDto(
 	                rs.getInt("BOARD_NO"),
 	                rs.getString("BOARD_TITLE"),
+	                rs.getInt("FILE_ID"),
 	                rs.getString("BOARD_WRITER"),
 	                rs.getString("BOARD_WRITE_TIME"),
 	                rs.getInt("HIT")
