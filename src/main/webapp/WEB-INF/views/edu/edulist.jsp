@@ -82,6 +82,12 @@
         .wrap-main .edu-list-search input[type=text]{
             width: 200px;
         }
+        .wrap-main #edu-name{
+        	color: black;
+        }
+        .wrap-main .edu-list-search input[type=image]{
+            height: 100%;
+        }
         .wrap-main .btn.search-edu{
             background-color: transparent;
             border: 0;
