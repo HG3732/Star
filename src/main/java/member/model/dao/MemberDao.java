@@ -14,33 +14,62 @@ import member.model.dto.MemberLoginDto;
 
 public class MemberDao {
 	
-	//select one login
-			public MemberInfoDto loginGetInfo(Connection conn, MemberLoginDto dto) {
-				MemberInfoDto result = null;
-				String sql = "SELECT MEMBER_ID, MEMBER_ADMIN, MEMBER_NAME, MEMBER_EMAIL, MEMBER_ADDRESS FROM MEMBER WHERE MEMBER_ID = ? AND MEMBER_PWD = ?";
-				PreparedStatement pstmt = null;
-				ResultSet rs = null;
-				
-				try {
-					pstmt = conn.prepareStatement(sql);
-					// ? 처리
-					pstmt.setString(1, dto.getMem_id());
-					pstmt.setString(2, dto.getMem_pwd());
-					rs = pstmt.executeQuery();
-					// result 처리
-					if(rs.next()) {
-						result = new MemberInfoDto(rs.getString("MEMBER_ID"), rs.getInt("MEMBER_ADMIN"), rs.getString("MEMBER_NAME"), rs.getString("MEMBER_EMAIL"), rs.getString("MEMBER_ADDRESS"));
-					}
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-				
-				close(rs);
-				close(pstmt);
-				return result;
-			}
+	//mypage login
+	public MemberDto selectCheckPw(Connection conn, String pw) {
+		MemberDto result = null;
+		String sql = "SELECT * FROM MEMBER WHERE MEMBER_PWD = ?";
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		
-		//select one login
+		try {
+			pstmt = conn.prepareStatement(sql);
+			// ? 처리
+			pstmt.setString(1, pw);
+			rs = pstmt.executeQuery();
+			// result 처리
+			if(rs.next()) {
+				result = new MemberDto(rs.getString("MEMEBER_ID")
+						, rs.getInt("MEMBER_ADMIN"), rs.getString("MEMBER_NAME")
+						, rs.getString("MEMBER_PWD"), rs.getString("MEMBER_EMAIL")
+						, rs.getString("MEMBER_ADDRESS"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		close(rs);
+		close(pstmt);
+		return result;
+	}
+			
+	
+	
+	//select one login
+		public MemberInfoDto loginGetInfo(Connection conn, MemberLoginDto dto) {
+			MemberInfoDto result = null;
+			String sql = "SELECT MEMBER_ID, MEMBER_ADMIN, MEMBER_NAME, MEMBER_EMAIL, MEMBER_ADDRESS FROM MEMBER WHERE MEMBER_ID = ? AND MEMBER_PWD = ?";
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			try {
+				pstmt = conn.prepareStatement(sql);
+				// ? 처리
+				pstmt.setString(1, dto.getMem_id());
+				pstmt.setString(2, dto.getMem_pwd());
+				rs = pstmt.executeQuery();
+				// result 처리
+				if(rs.next()) {
+					result = new MemberInfoDto(rs.getString("MEMBER_ID"), rs.getInt("MEMBER_ADMIN"), rs.getString("MEMBER_NAME"), rs.getString("MEMBER_EMAIL"), rs.getString("MEMBER_ADDRESS"));
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			
+			close(rs);
+			close(pstmt);
+			return result;
+		}
+		
+	//select one login
 		public int login(Connection conn, MemberLoginDto dto) {
 			int result = 0;
 			String sql = "SELECT COUNT(*) C FROM MEMBER WHERE MEMBER_ID = ? AND MEMBER_PWD = ?";
@@ -66,7 +95,7 @@ public class MemberDao {
 			return result;
 		}
 		
-		//select one check id
+	//select one check id
 		public int selectCheckId(Connection conn, String memId) {
 			int result = 0;
 			String sql = "SELECT COUNT(*) C FROM MEMBER WHERE MEMBER_ID = ?";
@@ -93,7 +122,7 @@ public class MemberDao {
 		
 		
 		
-		//select list - All
+	//select list - All
 		public List<MemberDto> selectAllList(Connection conn) {
 			List<MemberDto> result = null;
 			String sql = "SELECT * FROM MEMBER";

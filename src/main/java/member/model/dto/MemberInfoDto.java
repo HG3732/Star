@@ -14,8 +14,10 @@ public class MemberInfoDto {
 	private String mem_email;
 	private String mem_address;
 	
-	public MemberInfoDto() {
-		super();
+	@Override
+	public String toString() {
+		return "MemberInfoDto [mem_id=" + mem_id + ", mem_admin=" + mem_admin + ", mem_name=" + mem_name
+				+ ", mem_email=" + mem_email + ", mem_address=" + mem_address + "]";
 	}
 
 	public MemberInfoDto(String mem_id, int mem_admin, String mem_name, String mem_email, String mem_address) {

@@ -14,7 +14,5 @@
 <body>
 	<%@include file="/WEB-INF/views/common/header.jsp"%>
 	<%@include file="/WEB-INF/views/home/home.jsp"%>
-	            [[ ${ssslogin} ]]
-[[ <%=session.getAttribute("ssslogin")%> ]]
 </body>
 </html>

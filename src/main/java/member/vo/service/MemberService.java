@@ -11,6 +11,13 @@ import static common.SemiTemplate.*;
 public class MemberService {
 	private MemberDao dao = new MemberDao();
 	
+	public MemberDto MypageLoginDto(String pw) {
+		MemberDto result = null;
+		Connection conn = getConnection(true);
+		result = dao.selectCheckPw(conn, pw);
+		return result;
+	}
+	
 	public MemberInfoDto loginGetInfo(MemberLoginDto dto) {
 		MemberInfoDto result = null;
 		Connection conn = getConnection(true);

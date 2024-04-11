@@ -33,7 +33,6 @@ function loginSubmitHandler() {
 			} else {
 				alert("아이디 또는 비밀번호를 확인해주세요");
 				$("[name=pwd]").val("");
-				location.href="${pageContext.request.contextPath}/home";
 			}
 		}
 		, error : function(request, status, error) {
@@ -71,8 +70,6 @@ function loginBtnHandler() {
                 </div>
             </form>
             <button type="button" class="join">회원 가입</button>
-            [[ ${ssslogin} ]]
-[[ <%=session.getAttribute("ssslogin")%> ]]
         </div>
     </div>
 </body>

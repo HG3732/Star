@@ -59,7 +59,7 @@ body {
     outline : 5px solid #503396;
 }
 
-.main-login > button {
+.main-login > input[type=button] {
     border-radius: 10px;
     border: none;
     width: 200px;
@@ -68,7 +68,7 @@ body {
     color: white;
 }
 
-.main-login > button:disabled {
+.main-login > input[type=button]:disabled {
     background-color: #aaa;
 }
 

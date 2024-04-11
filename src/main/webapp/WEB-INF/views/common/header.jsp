@@ -13,8 +13,12 @@
     
 <script>
 $(loadedHandler)
-function loadedHandler() {
-	$(".logout").on("click", logoutHandler)
+	function loadedHandler() {
+		$(".logout").on("click", logoutHandler);
+		$(".mypage").on("click", mypageHandler);
+		$(".close-login").on("click", loginCloseHandler);
+		$(".mypage-submit").on("click", modalLoginHandler);
+	}
 	
 	function logoutHandler() {
 		alert("안녕히가십시오");
@@ -24,11 +28,66 @@ function loadedHandler() {
 		frmlogout.method = "post";
 		frmlogout.submit();
 	}
-}
+	
+	var count = 0;
+	
+	function mypageHandler(){
+		$(".wrap-modal").css("display", "flex");
+		count = 0;
+	}
+	
+	function loginCloseHandler(){
+		$(".wrap-modal").css("display", "none");
+	}
+	
+	function modalLoginHandler(){
+		$.ajax({
+			url:"${pageContext.request.contextPath}/mypagelogin"
+			,method : "post"
+			,data : $("#mypage-login").serialize()
+			,success : function(result){
+				console.log(result);
+				if(result == 1){
+					$("[name=pw]").val("");
+					location.href="${pageContext.request.contextPath}/home";	//TODO
+				} else {
+					if(count < 4){
+						count++;
+						alert("비밀번호가 맞지 않습니다. [" + count + "]회 오류");
+						$("[name=pw]").val("");
+					} else {
+						alert("오류횟수(3회)를 초과하셨으므로 메인페이지로 돌아갑니다.")
+						count = 0;
+						location.href="${pageContext.request.contextPath}/home";
+					}
+					
+				}
+			}
+			, error : function(request, status, error) {
+				alert("code:"  + request.status + "\n" + "message : "
+						+ request.responseText + "\n"
+						+"error : " + error);
+				}	
+		})
+	}
 
 </script>
 </head>
 <body>
+   <div class="wrap-modal">
+        <div class="modal-login">
+        	<form id="mypage-login">
+	            <div class="top-bar">
+	                <span>비밀번호 입력</span>
+	                <button type="button" class="close-login" style="color: black;">X</button>
+	            </div>
+	            <div class="main-login">
+	                <input type="password" name="pw" placeholder="비밀번호">
+	                <input type="button" name="mypage-submit" class="mypage-submit" value="로그인">
+	            </div>
+            </form>
+        </div>
+   	</div>
     <header>
 	    <div class="wrap-header">
 	    	<div class="top-bar">
@@ -41,7 +100,7 @@ function loadedHandler() {
 	                	<form id="logout">
 		                	<div><a href="#" class="logout">로그아웃</a></div>
 		                </form>
-		                <div><a href="#">마이페이지</a></div>
+		                <div><a href="#" class="mypage">${ssslogin.mem_name}님의 페이지</a></div>
 	                </c:otherwise>
 	            </c:choose>
             </div>

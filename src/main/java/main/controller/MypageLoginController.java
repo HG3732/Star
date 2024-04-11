@@ -7,37 +7,36 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import member.model.dto.MemberDto;
 import member.model.dto.MemberInfoDto;
-import member.model.dto.MemberLoginDto;
 import member.vo.service.MemberService;
 
-@WebServlet("/login")
-public class LoginController extends HttpServlet {
+@WebServlet("/mypagelogin")
+public class MypageLoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	private MemberService service = new MemberService();
 	
-    public LoginController() {
+    public MypageLoginController() {
         super();
     }
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/WEB-INF/views/loginpage.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/views/main.jsp").forward(request, response);
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
-		MemberLoginDto dto = new MemberLoginDto(id, pw);
+		MemberDto resultInfo = null;
 		
-		// ajax
 		// 성공 : 1
 		// 실패 : 0
 		int result = 0;
-		MemberInfoDto resultInfo = service.loginGetInfo(dto);
-		if(resultInfo != null) {
+		resultInfo = service.MypageLoginDto(pw);
+		MemberInfoDto checkUser = (MemberInfoDto)request.getAttribute("ssslogin");
+		if(resultInfo != null && resultInfo.getMem_id() == checkUser.getMem_id()) {
 			//성공
-			request.getSession().setAttribute("ssslogin", resultInfo);
+			request.getSession().setAttribute("ssslogin2", resultInfo);
 			result = 1;
 		}
 		response.getWriter().append(String.valueOf(result));
