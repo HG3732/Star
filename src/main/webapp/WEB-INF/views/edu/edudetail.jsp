@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>교육 목록 및 예약 현황</title>
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js"></script>
     <link href="${pageContext.request.contextPath}/resource/css/reset.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/resource/css/core.css" rel="stylesheet">
     <style>
@@ -172,7 +171,7 @@
                         </table>
                     </div>
                     <div class="edu-book">
-                        <a href="http://192.168.10.11:5500/star/E-5.html">신청하기</a>
+                        <a href="http://localhost:8080/star/edu/book/form">신청하기</a>
                     </div>
                     
                 </div>
