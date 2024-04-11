@@ -181,7 +181,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <a href="http://localhost:8080/star/edu/detail">수정하기</a>
+                    <button type="button" class="btn eduEdit">수정하기</button>
                 </div>
             </div>
         </div>
