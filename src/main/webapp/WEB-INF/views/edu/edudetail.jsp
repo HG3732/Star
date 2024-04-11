@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>교육 목록 및 예약 현황</title>
+    <title>KimParkSeo</title>
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
     <link href="${pageContext.request.contextPath}/resource/css/reset.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/resource/css/core.css" rel="stylesheet">
@@ -133,8 +133,8 @@
 
         </div>
         <div class="content">
-            <a href="http://localhost:8080/star/edu/list">교육 목록</a>
-            <a href="http://localhost:8080/star/edu/book/list">교육 예약 현황</a>
+            <a href="http://localhost:8080/star/edu/list"><h3>교육 목록</h3></a>
+            <a href="http://localhost:8080/star/edu/book/list"><h3>교육 예약 현황</h3></a>
             <div class="home-menu">
                 <a href="#"><img src="https://www.jejusi.go.kr/images/star/icon/home_icon01.png"></a>
                 <div> &nbsp; | 행사 및 교육 | 행사 및 교육신청</div>

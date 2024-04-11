@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>교육 목록 및 예약 현황</title>
+    <title>KimParkSeo</title>
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
     <link href="${pageContext.request.contextPath}/resource/css/reset.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/resource/css/core.css" rel="stylesheet">
