@@ -1,4 +1,4 @@
-package board.controller;
+package education.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,32 +7,25 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import board.model.service.BoardService;
-
 /**
- * Servlet implementation class BoardListController
+ * Servlet implementation class EduDetailController
  */
-@WebServlet("/board/community")
-public class BoardListController extends HttpServlet {
+@WebServlet("/edu/detail")
+public class EduDetailController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private BoardService service = new BoardService();
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BoardListController() {
+    public EduDetailController() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("연결 확인 두 겟");
-		request.setAttribute("dtolist", service.selectAllList());
-		System.out.println("컨트롤러 selectAllList" + service.selectAllList());
-		request.getRequestDispatcher("/WEB-INF/views/board/board_community.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/views/edu/edudetail.jsp").forward(request, response);
 	}
 
 	/**

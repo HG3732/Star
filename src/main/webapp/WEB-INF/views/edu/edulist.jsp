@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>교육 목록 및 예약 현황</title>
+    <title>KimParkSeo</title>
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
     <link href="${pageContext.request.contextPath}/resource/css/reset.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/resource/css/core.css" rel="stylesheet">
@@ -56,7 +56,9 @@
 
 
         .wrap-main .home-menu img{
-            width: 1em; height: 1em;
+            width: 1em;
+			height: 1em;
+            background-color: white;
         }
         .wrap-main .edu-list{
             clear: both;
@@ -70,12 +72,21 @@
         .wrap-main .edu-list-detail form{
             display: inline-block;
         }
+        .wrap-main .edu-list-detail table{
+        	margin: 20px 10px;
+        }
         .wrap-main .edu-list-search form{
             display: flex;
             justify-content: center;
         }
         .wrap-main .edu-list-search input[type=text]{
             width: 200px;
+        }
+        .wrap-main #edu-name{
+        	color: black;
+        }
+        .wrap-main .edu-list-search input[type=image]{
+            height: 100%;
         }
         .wrap-main .btn.search-edu{
             background-color: transparent;
@@ -87,12 +98,15 @@
             display: flex;
             flex-wrap: wrap;
             flex-direction: row;
-            column-gap: 5%;
+            column-gap: 10px;
             row-gap: 10px;
         }
         .wrap-main .edu-list-detail > div{
-            width: 30%;
+            width: 29%;
             height: auto;
+            border: 1px solid white;
+    		margin: 10px 20px;
+    		box-sizing: border-box;
         }
 
 
@@ -116,8 +130,8 @@
 
         </div>
         <div class="content">
-            <a href="http://localhost:8080/star/edu/list">교육 목록</a>
-            <a href="http://localhost:8080/star/edu/detail">교육 예약 현황</a>
+            <a href="http://localhost:8080/star/edu/list"><h3>교육 목록</h3></a>
+            <a href="http://localhost:8080/star/edu/book/list"><h3>교육 예약 현황</h3></a>
             <div class="home-menu">
                 <a href="#"><img src="https://www.jejusi.go.kr/images/star/icon/home_icon01.png"></a>
                 <div> &nbsp; | 행사 및 교육 | 행사 및 교육신청</div>
@@ -132,11 +146,11 @@
                 </div>
                 <div class="edu-list-detail">
                     <div>
-                        <a href="http://192.168.10.11:5500/star/E-3.html">
+                        <a href="http://localhost:8080/star/edu/detail">
                         	<div class="edu-content">
-	                            <table style="line-height: 5em;">
+	                            <table style="line-height: 4em;">
 	                                <colgroup>
-	                                    <col style="width: 40%;">
+	                                    <col style="width: 33%;">
 	                                    <col>
 	                                </colgroup>
 	                                <thead>
@@ -163,11 +177,11 @@
                         </a>
                     </div>
                     <div>
-                        <a href="http://192.168.10.11:5500/star/E-3.html">
+                        <a href="http://localhost:8080/star/edu/detail">
                         	<div class="edu-content">
-	                            <table style="line-height: 5em;">
+	                            <table style="line-height: 4em;">
 	                                <colgroup>
-	                                    <col style="width: 40%;">
+	                                    <col style="width: 33%;">
 	                                    <col>
 	                                </colgroup>
 	                                <thead>
@@ -194,11 +208,11 @@
                         </a>
                     </div>
                     <div>
-                        <a href="http://192.168.10.11:5500/star/E-3.html">
+                        <a href="http://localhost:8080/star/edu/detail">
                         	<div class="edu-content">
-	                            <table style="line-height: 5em;">
+	                            <table style="line-height: 4em;">
 	                                <colgroup>
-	                                    <col style="width: 40%;">
+	                                    <col style="width: 33%;">
 	                                    <col>
 	                                </colgroup>
 	                                <thead>
@@ -225,11 +239,11 @@
                         </a>
                     </div>
                     <div>
-                        <a href="http://192.168.10.11:5500/star/E-3.html">
+                        <a href="http://localhost:8080/star/edu/detail">
                         	<div class="edu-content">
-	                            <table style="line-height: 5em;">
+	                            <table style="line-height: 4em;">
 	                                <colgroup>
-	                                    <col style="width: 40%;">
+	                                    <col style="width: 33%;">
 	                                    <col>
 	                                </colgroup>
 	                                <thead>
@@ -256,11 +270,11 @@
                         </a>
                     </div>
                     <div>
-                        <a href="http://192.168.10.11:5500/star/E-3.html">
+                        <a href="http://localhost:8080/star/edu/detail">
                         	<div class="edu-content">
-	                            <table style="line-height: 5em;">
+	                            <table style="line-height: 4em;">
 	                                <colgroup>
-	                                    <col style="width: 40%;">
+	                                    <col style="width: 33%;">
 	                                    <col>
 	                                </colgroup>
 	                                <thead>
@@ -287,11 +301,11 @@
                         </a>
                     </div>
                     <div>
-                        <a href="http://192.168.10.11:5500/star/E-3.html">
+                        <a href="http://localhost:8080/star/edu/detail">
                         	<div class="edu-content">
-	                            <table style="line-height: 5em;">
+	                            <table style="line-height: 4em;">
 	                                <colgroup>
-	                                    <col style="width: 40%;">
+	                                    <col style="width: 33%;">
 	                                    <col>
 	                                </colgroup>
 	                                <thead>

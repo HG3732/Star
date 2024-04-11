@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -77,17 +78,15 @@
         	padding: 30px;
         }
 
-		.wrap-main .edu-detail-title{
-			float: left;
-			width: 80%;
-		}
-		.wrap-main .edu-edit-del{
-			width: 20%;
-		    display: flex;
-		    float: right;
-		    column-gap: 10px;
-		    justify-content: flex-end;
-		}
+        .wrap-main .edu-list-search {
+            background-color: silver;
+            padding: 5px 0;
+            text-align: center;
+        }
+
+        .wrap-main .edu-list-detail form {
+            display: inline-block;
+        }
 
         .wrap-main .edu-list-search input[type=text] {
             width: 200px;
@@ -99,19 +98,37 @@
             cursor: pointer;
         }
 
+        .wrap-main div.edu-list-detail {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+            justify-content: space-between;
+            column-gap: 5px;
+        }
+
+        .wrap-main .edu-list-detail>div {
+            width: 30%;
+        }
 
 
 
+
+
+        .wrap-main .edu-detail-content input
+        , .wrap-main .edu-detail-content textarea{
+            border: 1px solid white;
+            background-color: transparent;
+        }
+        
         .wrap-main .edu-detail-content table{
             width: 100%;
         }
-
-
-
-        .wrap-main .edu-book{
-            text-align: center;
+        .wrap-main .edu-detail-content textarea{
+            width: 100%;
+            box-sizing: border-box;
+            border: 1px solid white;
+            resize: none;
         }
-
 
 
 
@@ -142,13 +159,7 @@
             <hr>
             <div class="edu-list">
                 <div class="edu-detail">
-                    <div class="edu-detail-title">
-                        교육 제목
-                    </div>
-                    <div class="edu-edit-del">
-                        <a href="http://localhost:8080/star/edu/detail/edit">수정</a>
-                        <a href="해당 글 삭제 doGet">삭제</a>
-                    </div>
+                    <div class="edu-detail-title">교육 제목</div>
                     <div class="edu-detail-content">
                         <table border="1" style="border-collapse: collapse;">
                             <colgroup>
@@ -159,21 +170,18 @@
                             </colgroup>
                             <tbody>
                                 <tr>
-                                    <td>신청기간</td><td>기간</td><td>운영기간</td><td>기간</td>
+                                    <td>신청기간</td><td><input type="text" name="book-period"></td><td>운영기간</td><td><input type="text" name="oper-period"></td>
                                 </tr>
                                 <tr>
-                                    <td>운영요일</td><td>요일</td><td colspan="2"></td>
+                                    <td>운영요일</td><td><input type="text" name="oper-day"></td><td colspan="2"></td>
                                 </tr>
                                 <tr>
-                                    <td colspan="4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium iure placeat odio ullam perferendis, nostrum, vel quas modi aut recusandae id, sapiente voluptas facere quibusdam autem et natus. Velit, nulla.</td>
+                                    <td colspan="4"><textarea rows="10"></textarea></td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
-                    <div class="edu-book">
-                        <a href="http://localhost:8080/star/edu/book/form">신청하기</a>
-                    </div>
-                    
+                    <a href="http://localhost:8080/star/edu/detail">수정하기</a>
                 </div>
             </div>
         </div>
