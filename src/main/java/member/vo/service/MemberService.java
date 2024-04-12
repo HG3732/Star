@@ -2,6 +2,8 @@ package member.vo.service;
 
 import java.sql.Connection;
 import java.util.List;
+import java.util.Map;
+
 import member.model.dao.MemberDao;
 import member.model.dto.MemberDto;
 import member.model.dto.MemberInfoDto;
@@ -39,10 +41,13 @@ public class MemberService {
 	}
 	
 	
-	public List<MemberDto> selectAllList() {
-		List<MemberDto> result = null;
+	public Map<String, Object> selectMemberList(int pageSize, int pageBlockSize, int currentPageNum) {
+		Map<String, Object> result = null;
 		Connection conn = getConnection(true);
-		result = dao.selectAllList(conn);
+		int start = pageSize*(currentPageNum-1)+1;
+		int end = pageSize*currentPageNum;
+		
+		result = dao.selectMemberList(conn);
 		close(conn);
 		return result;
 	}

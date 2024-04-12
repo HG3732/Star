@@ -95,7 +95,7 @@ public class MemberDao {
 		
 		
 	//select list - All
-		public List<MemberDto> selectAllList(Connection conn) {
+		public List<MemberDto> selectMemberList(Connection conn) {
 			List<MemberDto> result = null;
 			String sql = "SELECT * FROM MEMBER";
 			PreparedStatement pstmt = null;
