@@ -82,7 +82,6 @@
 			width: 80%;
 		}
 		.wrap-main .edu-edit-del{
-			width: 20%;
 		    display: flex;
 		    float: right;
 		    column-gap: 10px;
@@ -129,9 +128,6 @@
 		<%@include file="/WEB-INF/views/common/header.jsp" %>
 	</div>
     <div class="wrap-main">
-        <div>
-
-        </div>
         <div class="content">
             <a href="http://localhost:8080/star/edu/list"><h3>교육 목록</h3></a>
             <a href="http://localhost:8080/star/edu/book/list"><h3>교육 예약 현황</h3></a>
@@ -142,30 +138,36 @@
             <hr>
             <div class="edu-list">
                 <div class="edu-detail">
-                    <div class="edu-detail-title">
-                        교육 제목
-                    </div>
-                    <div class="edu-edit-del">
-                        <a href="http://localhost:8080/star/edu/detail/edit">수정</a>
-                        <a href="해당 글 삭제 doGet">삭제</a>
-                    </div>
                     <div class="edu-detail-content">
-                        <table border="1" style="border-collapse: collapse;">
+                        <table>
                             <colgroup>
                                 <col style="width: 10%;">
                                 <col>
+                                <col>
+                                <col>
                                 <col style="width: 10%;">
+                                <col>
+                                <col>
                                 <col>
                             </colgroup>
                             <tbody>
+                            	<tr>
+                            		<td colspan="7">교육 제목</td>
+                            		<td>
+	                            		<div class="edu-edit-del">
+                        				<a href="http://localhost:8080/star/edu/detail/edit">수정</a>
+	                        			<a href="해당 글 삭제 doGet">삭제</a>
+	                    				</div>
+	                    			</td>
+                            	</tr>
                                 <tr>
-                                    <td>신청기간</td><td>기간</td><td>운영기간</td><td>기간</td>
+                                    <td>신청기간</td><td>시작날짜</td><td>~</td><td>종료날짜</td><td>운영기간</td><td>시작날짜</td><td>~</td><td>종료날짜</td>
                                 </tr>
                                 <tr>
-                                    <td>운영요일</td><td>요일</td><td colspan="2"></td>
+                                    <td>운영요일</td><td>요일</td><td colspan="6"></td>
                                 </tr>
                                 <tr>
-                                    <td colspan="4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium iure placeat odio ullam perferendis, nostrum, vel quas modi aut recusandae id, sapiente voluptas facere quibusdam autem et natus. Velit, nulla.</td>
+                                    <td colspan="8">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium iure placeat odio ullam perferendis, nostrum, vel quas modi aut recusandae id, sapiente voluptas facere quibusdam autem et natus. Velit, nulla.</td>
                                 </tr>
                             </tbody>
                         </table>

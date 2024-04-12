@@ -1,5 +1,8 @@
+<%@page import="education.model.dto.EduBookDto"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -143,52 +146,18 @@
                 editable: false,
                 dayMaxEvents: false,
                 events: [
-                    {
-                        color: '#ff0000',
-                        title: 'Long Event',
-                        start: '2024-04-07',
-                        end: '2024-04-10'
-                    },
-                    {
-                        title: 'Conference',
-                        start: '2024-04-11',
-                        end: '2024-04-13'
-                    },
-                    {
-                        title: 'Conference2',
-                        start: '2024-04-11',
-                        end: '2024-04-13'
-                    },
-                    {
-                        title: 'Meeting',
-                        start: '2024-04-12T10:30:00',
-                        end: '2024-04-12T12:30:00'
-                    },
-                    {
-                        title: 'Lunch',
-                        start: '2024-04-12T12:00:00'
-                    },
-                    {
-                        title: 'Meeting',
-                        start: '2024-04-12T14:30:00'
-                    },
-                    {
-                        title: 'Happy Hour',
-                        start: '2024-04-12T17:30:00'
-                    },
-                    {
-                        title: 'Dinner',
-                        start: '2024-04-12T20:00:00'
-                    },
-                    {
-                        title: 'Birthday Party',
-                        start: '2024-04-13T07:00:00'
-                    },
-                    {
-                        title: 'Click for Google',
-                        url: 'http://google.com/',
-                        start: '2024-04-28'
-                    }
+                	<%
+                		List<EduBookDto> eduBookList = (List<EduBookDto>)request.getAttribute("eduBook");
+                		for(EduBookDto dto : eduBookList){
+                	%>
+                	{
+                		color: 'transparent'
+                		, title: '<%=dto.getEduPartSchool()%>'
+                		, start: '2024-04-10'
+                	},
+                	<%
+            			}
+                	%>
                 ]
             });
             calendar.render();

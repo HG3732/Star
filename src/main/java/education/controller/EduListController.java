@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import education.model.service.EduListService;
+import education.model.service.EduService;
 
 /**
  * Servlet implementation class EduListController
@@ -15,7 +15,7 @@ import education.model.service.EduListService;
 @WebServlet("/edu/list")
 public class EduListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private EduListService service = new EduListService();
+	private EduService service = new EduService();
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -29,6 +29,7 @@ public class EduListController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String searchSubject = request.getParameter("edu-name");
+		request.getSession().setAttribute("ssSearch", searchSubject);
 //		request.setAttribute("eduList", service.selectList());
 //		request.setAttribute("eduSubject", searchSubject);
 		
@@ -43,7 +44,7 @@ public class EduListController extends HttpServlet {
 				 e.printStackTrace();
 			}
 		}
-		request.setAttribute("map", service.selectPageList(pageSize, pageBlockSize, currentPageNum));
+		request.setAttribute("map", service.selectPageList(searchSubject, pageSize, pageBlockSize, currentPageNum));
 		
 		request.getRequestDispatcher("/WEB-INF/views/edu/edulist.jsp").forward(request, response);
 	}
