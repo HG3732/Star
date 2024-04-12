@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static common.SemiTemplate.*;
+
 import member.model.dto.MemberDto;
 import member.model.dto.MemberInfoDto;
 import member.model.dto.MemberLoginDto;
@@ -93,16 +94,42 @@ public class MemberDao {
 		}
 		
 		
-		
-	//select list - All
-		public List<MemberDto> selectMemberList(Connection conn) {
-			List<MemberDto> result = null;
-			String sql = "SELECT * FROM MEMBER";
+		public int selectTotalCount(Connection conn) {
+			int result = 0;
+			String sql = "select count(*) C from Member";
 			PreparedStatement pstmt = null;
 			ResultSet rs = null;
 			
 			try {
 				pstmt = conn.prepareStatement(sql);
+				rs = pstmt.executeQuery();
+				if(rs.next()) {
+					result = rs.getInt("C");
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			close(rs);
+			close(pstmt);
+			return result;
+		}
+		
+		
+	//select list - All
+		public List<MemberDto> selectMemberList(Connection conn, int start, int end) {
+			List<MemberDto> result = null;
+			String sql = "select m2.* "
+					+ " from (select m1.*, rownum rn"
+					+ "    from (select MEMBER_ID, MEMBER_ADMIN, MEMBER_NAME, MEMBER_PWD, MEMBER_EMAIL, MEMBER_ADDRESS "
+					+ "        from MEMBER order by member_id) m1) m2 "
+					+ " where rn between ? and ? ";
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, start);
+				pstmt.setInt(2, end);
 				rs = pstmt.executeQuery();
 				if(rs.next()) {
 					result = new ArrayList<MemberDto>();

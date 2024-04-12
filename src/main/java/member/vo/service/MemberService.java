@@ -1,6 +1,7 @@
 package member.vo.service;
 
 import java.sql.Connection;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -47,7 +48,21 @@ public class MemberService {
 		int start = pageSize*(currentPageNum-1)+1;
 		int end = pageSize*currentPageNum;
 		
-		result = dao.selectMemberList(conn);
+		int totalCount = dao.selectTotalCount(conn);
+		int totalPageCount = (totalCount%pageSize == 0) ? totalCount/pageSize : totalCount/pageSize + 1;
+		
+		int startPageNum = (currentPageNum%pageBlockSize == 0) ? ((currentPageNum/pageBlockSize)-1)*pageBlockSize + 1 : ((currentPageNum/pageBlockSize))*pageBlockSize + 1;
+		int endPageNum = (startPageNum+pageBlockSize > totalPageCount) ? totalPageCount : startPageNum + pageBlockSize - 1;
+		
+		List<MemberDto> dtoList = dao.selectMemberList(conn, start, end);
+		
+		result = new HashMap<String, Object>();
+		result.put("dtoList", dtoList);
+		result.put("totalPageCount", totalPageCount);
+		result.put("startPageNum", startPageNum);
+		result.put("endPageNum", endPageNum);
+		result.put("currentPageNum", currentPageNum);
+				
 		close(conn);
 		return result;
 	}
