@@ -20,9 +20,10 @@
 	href="${pageContext.request.contextPath}/resource/css/board/board_community.css"
 	rel="stylesheet">
 </head>
-
 <body>
+
 	[[${dtolist }]]
+	
 	<br> [[<%=request.getAttribute("dtolist")%>]]
 	<div class="wrap-header">
 		<header>
@@ -38,14 +39,18 @@
 					class="flex faq">FAQ</a>
 			</div>
 			<div class="location">
-				<div class="location notice">
-					<span>공지사항</span>
-				</div>
-				<div class="location community">
-					<span>커뮤니티 > </span>
-				</div>
 				<div class="location main">
-					<span>메인이미지 > </span>
+					<a href="${pageContext.request.contextPath}/home"> 
+					<img alt="메인" src="${pageContext.request.contextPath}/resource/image/home_icon.png">
+					</a>
+				</div>
+				<div class="l">|</div>
+				<div class="location community">
+					<span>커뮤니티</span>
+				</div>
+				<div class="l">|</div>
+				<div class="location notice">
+					<span>게시판</span>
 				</div>
 			</div>
 			<div class="subject">

@@ -1,11 +1,9 @@
 *{
-	color: white;
     box-sizing: border-box ;
 }
 a{
     text-decoration: none;
 }
-
 
 header{
 
@@ -23,7 +21,11 @@ header{
     width: 100%;
     display: flex;
     flex-flow: row nowrap;
-
+	border : 1px solid white;
+	
+}
+.flexnav a:first-child{
+	border-right : 1px solid white;
 }
 .flex{
     width: 100%;
@@ -32,13 +34,20 @@ header{
     height: 60px;
     padding-top: 20px;
 }
+
 .location{
+    display: flex;
     float: right;
-    height: 30px;
-    margin-top: 10px;
-    padding-top: 5px;
-    
+    padding: 10px 10px 0 10px;
+    vertical-align: middle;
 }
+.location .l{
+    padding-top: 20px;
+}
+.location span{
+	padding-top: 10px;
+}
+
 .subject{
     margin-top: 80px;
     text-align: center;
