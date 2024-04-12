@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import board.model.dto.BoardInsertDto;
 import board.model.dto.BoardListDto;
 
 //이름               널?       유형             
@@ -27,7 +28,7 @@ public class BoardDao {
 		List<BoardListDto> result = null;
 //		String sql = "SELECT BOARD_NO, BOARD_TITLE, BOARD_WRITER, BOARD_WRITE_TIME, HIT FROM BOARD_COMMUNITY";
 		String sql = "select board_no, board_title, file_id, board_writer, board_write_time, hit"
-				+ " from board_community join board_file on b_no = board_no";
+				+ " from board_community left join board_file on b_no = board_no order by 1 desc";
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 	    try {
@@ -78,9 +79,52 @@ public class BoardDao {
 //	}
 
 	// selectOne
-
+	
+	// select 
+	public int getSequenceNum(Connection conn) {
+		int result = 0;
+		String sql = "SELECT SEQ_BOARD_ID.nextval FROM DUAL";
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			// ? 처리
+			rs = pstmt.executeQuery();
+			// ResetSet처리
+			if(rs.next()) {
+				result = rs.getInt(1);
+			}			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		close(rs);
+		close(pstmt);
+		return result;
+	}
 	// insertList
-
+	public int insert(Connection conn, BoardInsertDto dto, int sequenceNum) {
+		int result = 0;
+		String sql = "INSERT INTO BOARD_COMMUNITY "
+				+ " (BOARD_NO, BOARD_WRITER, BOARD_TITLE, BOARD_CONTENT, BOARD_WRITE_TIME, HIT, MEMBER_ADMIN)"
+				+ " VALUES(?, ?, ?, ?, DEFAULT, DEFAULT, DEFAULT)";
+		PreparedStatement pstmt = null;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			// ? 처리
+			pstmt.setInt(1, sequenceNum);
+			pstmt.setString(2, dto.getBoardWriter());
+			pstmt.setString(3, dto.getBoardTitle());
+			pstmt.setString(4, dto.getBoardContent());
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		close(pstmt);
+		return result;
+		
+	}
 	// listContent
 
 	// deleteList
