@@ -24,7 +24,6 @@ function loginSubmitHandler() {
 		,method : "post"
 		,data : $("#login-form").serialize()
 		,success : function(result){
-			console.log(result);
 			if(result == 1){
 				
 				alert("어서오세요");

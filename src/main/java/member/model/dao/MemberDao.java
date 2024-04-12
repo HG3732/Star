@@ -172,25 +172,30 @@ public class MemberDao {
 			close(pstmt);
 			return result;
 		}
-		//update
-		public int update(Connection conn, MemberDto dto) {
+		
+		//MypageUpdate
+		public int update(Connection conn, String mem_id, String mem_pwd, String mem_email, String mem_address, String currentId) {
 			int result = 0;
-			String sql = "UPDATE MEMBER SET (MEMBER_ID, MEMBER_PWD, MEMBER_EMAIL, MEMBER_ADDRESS) = (?, ?, ?, ?) WHERE MEMBER_ID = ?";
+			String sql = "UPDATE MEMBER SET MEMBER_ID = ?, "
+					+ " MEMBER_PWD = ?, MEMBER_EMAIL = ?, MEMBER_ADDRESS = ? "
+					+ " WHERE MEMBER_ID = ? "
+					;
 			PreparedStatement pstmt = null;
 			try {
 				pstmt = conn.prepareStatement(sql);
-				pstmt.setString(1, dto.getMem_id());
-				pstmt.setString(2, dto.getMem_pwd());
-				pstmt.setString(3, dto.getMem_email());
-				pstmt.setString(4, dto.getMem_address());
+				pstmt.setString(1, mem_id);
+				pstmt.setString(2, mem_pwd);
+				pstmt.setString(3, mem_email);
+				pstmt.setString(4, mem_address);
+				pstmt.setString(5, currentId);
 				result = pstmt.executeUpdate();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-			
 			close(pstmt);
 			return result;
 		}
+		
 		//deletes
 		public int delete(Connection conn, String memId) {
 			int result = 0;

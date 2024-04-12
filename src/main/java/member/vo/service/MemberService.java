@@ -64,10 +64,10 @@ public class MemberService {
 		return result;
 	}
 	//update
-	public int update(MemberDto dto) {
+	public int mypageUpdate(String mem_id, String mem_pwd, String mem_email, String mem_address, String currentId) {
 		int result = 0;
 		Connection conn = getConnection(true);
-		result = dao.update(conn, dto);
+		result = dao.update(conn, mem_id, mem_pwd, mem_email, mem_address, currentId);
 		close(conn);
 		return result;
 	}
