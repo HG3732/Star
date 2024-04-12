@@ -17,10 +17,6 @@
         <div class="check-title">
             회원 조회
         </div>
-        <c:choose>
-        	<c:forEach items="${map.dtoList }">
-        	</c:forEach>
-        </c:choose>
         <div class="wrap-checkmember">
             <div class="check-head">
                 <div>이름</div>
@@ -29,62 +25,17 @@
                 <div>이메일 주소</div>
                 <div>주소</div>
             </div>
-            <div class="check-main">
-                <div>이름</div>
-                <div>아이디</div>
-                <div>비밀번호</div>
-                <div>이메일 주소</div>
-                <div>주소</div>
-            </div>
-            <div class="check-main">
-                <div>이름</div>
-                <div>아이디</div>
-                <div>비밀번호</div>
-                <div>이메일 주소</div>
-                <div>주소</div>
-            </div>
-            <div class="check-main">
-                <div>이름</div>
-                <div>아이디</div>
-                <div>비밀번호</div>
-                <div>이메일 주소</div>
-                <div>주소</div>
-            </div>
-            <div class="check-main">
-                <div>이름</div>
-                <div>아이디</div>
-                <div>비밀번호</div>
-                <div>이메일 주소</div>
-                <div>주소</div>
-            </div>
-            <div class="check-main">
-                <div>이름</div>
-                <div>아이디</div>
-                <div>비밀번호</div>
-                <div>이메일 주소</div>
-                <div>주소</div>
-            </div>
-            <div class="check-main">
-                <div>이름</div>
-                <div>아이디</div>
-                <div>비밀번호</div>
-                <div>이메일 주소</div>
-                <div>주소</div>
-            </div>
-            <div class="check-main">
-                <div>이름</div>
-                <div>아이디</div>
-                <div>비밀번호</div>
-                <div>이메일 주소</div>
-                <div>주소</div>
-            </div>
-            <div class="check-main">
-                <div>이름</div>
-                <div>아이디</div>
-                <div>비밀번호</div>
-                <div>이메일 주소</div>
-                <div>주소</div>
-            </div>
+        <c:choose>
+        	<c:forEach items="${map.dtoList }" var="vo">
+	            <div class="check-main">
+	                <div>${vo.MEMBER_NAME }</div>
+	                <div>${vo.MEMBER_ID }</div>
+	                <div>${vo.MEMBER_PWD }</div>
+	                <div>${vo.MEMBER_EMAIL }</div>
+	                <div>${vo.MEMBER_ADDRESS }</div>
+	            </div>
+        	</c:forEach>
+        </c:choose>
         </div>
         <div class="pagenum">
             <div><a href="#"> &lt &lt </a></div>
