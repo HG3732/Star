@@ -7,9 +7,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 	<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
-	<link href="${pageContext.request.contextPath}/resource/css/reset.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/resource/css/core.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/resource/css/common/header.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/resource/css/reset.css" type="text/css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/resource/css/core.css" type="text/css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/resource/css/common/header.css?ver=1" type="text/css" rel="stylesheet">
 <script>
 $(loadedHandler)
 	function loadedHandler() {

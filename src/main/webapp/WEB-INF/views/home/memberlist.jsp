@@ -26,20 +26,15 @@
                 <div>주소</div>
             </div>
         <c:choose>
-	        <c:when test="${empty map.dtoList}">
-	        	<div>표시할 항목이 없습니다.</div>
-	        </c:when>
-	        <c:otherwise>
-	        	<c:forEach items="${map.dtoList }" var="vo">
-		            <div class="check-main">
-		                <div>${vo.MEMBER_NAME }</div>
-		                <div>${vo.MEMBER_ID }</div>
-		                <div>${vo.MEMBER_PWD }</div>
-		                <div>${vo.MEMBER_EMAIL }</div>
-		                <div>${vo.MEMBER_ADDRESS }</div>
-		            </div>
-	        	</c:forEach>
-	        </c:otherwise>
+        	<c:forEach items="${map.dtoList }" var="vo">
+	            <div class="check-main">
+	                <div>${vo.MEMBER_NAME }</div>
+	                <div>${vo.MEMBER_ID }</div>
+	                <div>${vo.MEMBER_PWD }</div>
+	                <div>${vo.MEMBER_EMAIL }</div>
+	                <div>${vo.MEMBER_ADDRESS }</div>
+	            </div>
+        	</c:forEach>
         </c:choose>
         </div>
         <div class="pagenum">
