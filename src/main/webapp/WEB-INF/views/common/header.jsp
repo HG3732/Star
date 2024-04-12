@@ -40,8 +40,12 @@ $(loadedHandler)
 		$(".wrap-modal").css("display", "none");
 	}
 	
-	function modalLoginHandler(){
-		$.ajax({
+ 	function modalLoginHandler(){
+		
+ 		let option = "width=400, height=500, menubar=no, toolbar=no, scrollbars=no, resizable=no";
+ 		window.open("", "_blank", options);
+ 		
+ 		/* $.ajax({
 			url:"${pageContext.request.contextPath}/mypagelogin"
 			,method : "post"
 			,data : $("#mypage-login").serialize()
@@ -68,7 +72,7 @@ $(loadedHandler)
 						+ request.responseText + "\n"
 						+"error : " + error);
 				}	
-		})
+		}) */ 
 	}
 
 </script>
@@ -100,7 +104,7 @@ $(loadedHandler)
 	                	<form id="logout">
 		                	<div><a href="#" class="logout">로그아웃</a></div>
 		                </form>
-		                <div><a href="#" class="mypage">${ssslogin.mem_name}님의 페이지</a></div>
+		                <div><a href="http://localhost:8080/star/mypage" class="mypage">${ssslogin.mem_name}님의 페이지</a></div>
 	                </c:otherwise>
 	            </c:choose>
             </div>

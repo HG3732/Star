@@ -13,37 +13,7 @@ import member.model.dto.MemberInfoDto;
 import member.model.dto.MemberLoginDto;
 
 public class MemberDao {
-	
-	//mypage login
-	public MemberDto selectCheckPw(Connection conn, String pw) {
-		MemberDto result = null;
-		String sql = "SELECT * FROM MEMBER WHERE MEMBER_PWD = ?";
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		
-		try {
-			pstmt = conn.prepareStatement(sql);
-			// ? 처리
-			pstmt.setString(1, pw);
-			rs = pstmt.executeQuery();
-			// result 처리
-			if(rs.next()) {
-				result = new MemberDto(rs.getString("MEMEBER_ID")
-						, rs.getInt("MEMBER_ADMIN"), rs.getString("MEMBER_NAME")
-						, rs.getString("MEMBER_PWD"), rs.getString("MEMBER_EMAIL")
-						, rs.getString("MEMBER_ADDRESS"));
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		
-		close(rs);
-		close(pstmt);
-		return result;
-	}
-			
-	
-	
+
 	//select one login
 		public MemberInfoDto loginGetInfo(Connection conn, MemberLoginDto dto) {
 			MemberInfoDto result = null;
@@ -58,7 +28,9 @@ public class MemberDao {
 				rs = pstmt.executeQuery();
 				// result 처리
 				if(rs.next()) {
-					result = new MemberInfoDto(rs.getString("MEMBER_ID"), rs.getInt("MEMBER_ADMIN"), rs.getString("MEMBER_NAME"), rs.getString("MEMBER_EMAIL"), rs.getString("MEMBER_ADDRESS"));
+					result = new MemberInfoDto(rs.getString("MEMBER_ID"), rs.getInt("MEMBER_ADMIN")
+							, rs.getString("MEMBER_NAME"), rs.getString("MEMBER_EMAIL")
+							, rs.getString("MEMBER_ADDRESS"));
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
